@@ -1,0 +1,128 @@
+{
+  "name": "giap-customer-ui",
+  "version": "1.2.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "8.9.1",
+    "npm": "5.5.1"
+  },
+  "scripts": {
+    "server": "cd mockApi && npm install && npm start",
+    "hash": "node mockApi/src/hash",
+    "test:watch": "npm run build-css && react-scripts test --env=jsdom --watchAll --coverage --no-cache",
+    "test": "npm run build-css && react-scripts test --env=jsdom --coverage --no-cache",
+    "start:local": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start\"",
+    "start": "npm run build-css && node-sass-chokidar src/ '*.scss' -o src/ --watch --recursive | react-scripts start",
+    "build": "npm run build-css && react-scripts build",
+    "check": "cross-env NODE_ENV=test npm test",
+    "prepack": "npm run build",
+    "check-node-version": "cross-var ./node_modules/.bin/check-node-version --node $npm_package_engines_node --npm $npm_package_engines_npm",
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/ '*.scss' -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ '*.scss' -o src/ --watch --recursive",
+    "lint": "eslint ./src"
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "all": true,
+    "sourceMap": false,
+    "instrument": false,
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "src/index.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "dependencies": {
+    "@scotia/canvas-redux-form": "^5.9.2",
+    "babel-polyfill": "^6.26.0",
+    "chokidar": "^2.0.4",
+    "lodash": "^4.17.11",
+    "redux-form": "^8.2.6",
+    "svg-react-loader": "^0.4.5"
+  },
+  "devDependencies": {
+    "@scotia/canvas-dom": "4.4.5",
+    "@scotia/canvas-react": "5.9.2",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^4.1.5",
+    "babel-plugin-module-resolver": "3.1.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "classnames": "2.2.6",
+    "concurrently": "4.0.1",
+    "cross-env": "^5.1.4",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-react-intl": "^2.0.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "2.10.0",
+    "eslint-plugin-prettier": "2.7.0",
+    "events-polyfill": "2.0.7",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "fetch-mock": "^6.4.4",
+    "final-form": "4.10.0",
+    "final-form-arrays": "^1.1.0",
+    "history": "^4.7.2",
+    "json-server": "0.14.0",
+    "node-sass-chokidar": "^1.3.4",
+    "prettier": "^1.12.1",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-final-form": "3.6.7",
+    "react-final-form-arrays": "^1.1.0",
+    "react-intl": "^2.4.0",
+    "react-number-format": "4.0.5",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "react-test-renderer": "^16.3.2",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-mock-store": "^1.5.1",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^4.0.0",
+    "shx": "0.3.2",
+    "string-format": "2.0.0",
+    "webpack": "^3.1.0"
+  },
+  "properties": {
+    "artifactory_contextUrl": "http://af.cds.bns/artifactory",
+    "artifactory_projectRepoKey": "local-npm-bns",
+    "artifactory_user": "",
+    "artifactory_password": "",
+    "artifactory_npm_repo": "virtual-npm-bns",
+    "pcf_app_url": "",
+    "cdp_vault_name": "",
+    "cdp_environment_name": "",
+    "cdp_region_name": "",
+    "cdp_vault_clientId": "",
+    "cdp_vault_clientSecret": "",
+    "pipeline_plugin_version": "1.1.2",
+    "sonar_host_url": "http://sonar.agile.bns/",
+    "sonar_sources": "src",
+    "sonar_tests": "test",
+    "sonar_report_paths": "coverage/lcov.info",
+    "sonar_language": "js"
+  },
+  "settings": {
+    "rootProject.name": "customer-ui"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.agile.bns:7999/giap/customer-ui"
+  }
+}
